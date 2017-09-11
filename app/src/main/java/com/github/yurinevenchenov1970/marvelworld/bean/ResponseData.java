@@ -15,12 +15,12 @@ import java.util.List;
  * @author Yuri Nevenchenov on 9/4/2017.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ResponseData implements Parcelable {
+public class ResponseData<T> implements Parcelable {
 
     public static final ClassCreator CREATOR = new ClassCreator();
 
     @JsonProperty("results")
-    public List<MarvelCharacter> mCharacterList;
+    public List<T> mCharacterList;
 
     public ResponseData() {
         //Empty constructor needed by Jackson
