@@ -19,13 +19,14 @@ import com.github.yurinevenchenov1970.marvelworld.net.ApiClient;
 import com.github.yurinevenchenov1970.marvelworld.net.MarvelService;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CharactersFragment.OnItemClickListener{
 
     private static final String API_KEY = "8ce13978a563fbc8c0353ac9008e8bfd";
     private static final String HASH = "da3930ee8a5cf7ae5bce3dc296b6d6b6";
@@ -33,22 +34,30 @@ public class MainActivity extends AppCompatActivity {
 
     private MarvelService mService;
 
-    private Toolbar mToolbar;
-    private SearchView mSearchView;
-    private ProgressBar mProgressBar;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+
+    @BindView(R.id.search_view)
+    SearchView mSearchView;
+
+    @BindView(R.id.progress_bar)
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         initUI();
     }
 
+    @Override
+    public void onFragmentInteraction(MarvelCharacter character){
+        Toast.makeText(this, "here we are " + character.mDescription, Toast.LENGTH_LONG).show();
+    }
+
     private void initUI() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
-        mSearchView = (SearchView) findViewById(R.id.search_view);
         SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         mSearchView.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -75,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
         mProgressBar.setVisibility(View.VISIBLE);
     }
 
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
+    }
+
     private void showNoConnectionMessage() {
         Toast.makeText(this, R.string.no_connection, Toast.LENGTH_LONG).show();
     }
@@ -87,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<BaseResponse<MarvelCharacter>> call, Response<BaseResponse<MarvelCharacter>> response) {
                 BaseResponse<MarvelCharacter> baseResponse = response.body();
                 if(baseResponse != null) {
+                    hideProgressBar();
                     showData(new ArrayList<>(baseResponse.mResponseData.mCharacterList));
                 }
             }
