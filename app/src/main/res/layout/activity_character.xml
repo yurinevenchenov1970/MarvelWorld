@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.github.yurinevenchenov1970.marvelworld.CharacterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/character_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:src="@android:drawable/btn_star"/>
+
+        <TextView
+            android:id="@+id/character_name_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/character_image_view"
+            android:fontFamily="serif"
+            android:padding="@dimen/padding_small"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            android:textStyle="bold"
+            tools:text="Spider-Man"/>
+
+        <TextView
+            android:id="@+id/description_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/character_name_text_view"
+            android:fontFamily="serif"
+            android:padding="@dimen/padding_small"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+            tools:text="some long description"/>
+
+        <FrameLayout
+            android:id="@+id/comics_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description_text_view"/>
+
+        <FrameLayout
+            android:id="@+id/urls_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/comics_container"/>
+
+    </RelativeLayout>
+
+</ScrollView>

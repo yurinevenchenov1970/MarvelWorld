@@ -16,6 +16,7 @@ public class Thumbnail implements Parcelable {
 
     @StringDef({STANDARD_MEDIUM,
             LANDSCAPE_AMAZING,
+            LANDSCAPE_INCREDIBLE,
             PORTRAIT_FANTASTIC
     })
 
@@ -24,6 +25,7 @@ public class Thumbnail implements Parcelable {
 
     public static final String STANDARD_MEDIUM = "standard_medium";
     public static final String LANDSCAPE_AMAZING = "landscape_amazing";
+    public static final String LANDSCAPE_INCREDIBLE = "landscape_incredible";
     public static final String PORTRAIT_FANTASTIC = "portrait_fantastic";
 
     public static final ClassCreator CREATOR = new ClassCreator();

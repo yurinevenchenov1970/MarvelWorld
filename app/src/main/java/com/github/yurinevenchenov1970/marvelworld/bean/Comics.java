@@ -32,7 +32,7 @@ public class Comics implements Parcelable {
     protected Comics(Parcel in) {
         mCollectionURI = in.readString();
         mComicList = new ArrayList<>();
-        in.readList(mComicList, null);
+        in.readTypedList(mComicList, Comic.CREATOR);
     }
 
     @JsonIgnore
@@ -45,7 +45,7 @@ public class Comics implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(mCollectionURI);
-        parcel.writeList(mComicList);
+        parcel.writeTypedList(mComicList);
     }
 
     @JsonIgnore

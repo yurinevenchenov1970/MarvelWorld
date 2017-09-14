@@ -28,9 +28,6 @@ public class MarvelCharacter implements Parcelable {
     @JsonProperty("thumbnail")
     public Thumbnail mThumbnail;
 
-    @JsonProperty("resourceURI")
-    public String mResourceUri;
-
     @JsonProperty("comics")
     public Comics mComics;
 
@@ -45,10 +42,9 @@ public class MarvelCharacter implements Parcelable {
         mName = in.readString();
         mDescription = in.readString();
         mThumbnail = in.readParcelable(Thumbnail.class.getClassLoader());
-        mResourceUri = in.readString();
         mComics = in.readParcelable(Comics.class.getClassLoader());
         mUrls = new ArrayList<>();
-        in.readList(mUrls, null);
+        in.readTypedList(mUrls, MarvelUrl.CREATOR);
     }
 
     @JsonIgnore
@@ -63,9 +59,8 @@ public class MarvelCharacter implements Parcelable {
         parcel.writeString(mName);
         parcel.writeString(mDescription);
         parcel.writeParcelable(mThumbnail, i);
-        parcel.writeString(mResourceUri);
         parcel.writeParcelable(mComics, i);
-        parcel.writeList(mUrls);
+        parcel.writeTypedList(mUrls);
     }
 
     @JsonIgnore
@@ -77,7 +72,6 @@ public class MarvelCharacter implements Parcelable {
         return Objects.equal(mName, that.mName) &&
                 Objects.equal(mDescription, that.mDescription) &&
                 Objects.equal(mThumbnail, that.mThumbnail) &&
-                Objects.equal(mResourceUri, that.mResourceUri) &&
                 Objects.equal(mComics, that.mComics)&&
                 Objects.equal(mUrls, that.mUrls);
     }
@@ -88,7 +82,6 @@ public class MarvelCharacter implements Parcelable {
         return Objects.hashCode(mName,
                 mDescription,
                 mThumbnail,
-                mResourceUri,
                 mComics,
                 mUrls);
     }
@@ -100,7 +93,6 @@ public class MarvelCharacter implements Parcelable {
                 .add("mName", mName)
                 .add("mDescription", mDescription)
                 .add("mThumbnail", mThumbnail)
-                .add("mResourceUri", mResourceUri)
                 .add("mComics", mComics)
                 .add("mUrls", mUrls)
                 .toString();

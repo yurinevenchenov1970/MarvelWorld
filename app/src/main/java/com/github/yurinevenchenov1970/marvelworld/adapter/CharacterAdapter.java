@@ -40,6 +40,8 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder> 
         holder.mDescriptionTextView.setText(character.mDescription);
         Picasso.with(holder.itemView.getContext())
                 .load(character.mThumbnail.getFullPath(Thumbnail.PORTRAIT_FANTASTIC))
+                .placeholder(R.drawable.progress_animation)
+                .error(R.drawable.error)
                 .into(holder.mImageView);
     }
 

@@ -53,8 +53,10 @@ public class MainActivity extends AppCompatActivity implements CharactersFragmen
 
     @Override
     public void onFragmentInteraction(MarvelCharacter character){
-        Toast.makeText(this, "here we are " + character.mDescription, Toast.LENGTH_LONG).show();
+        startActivity(CharacterActivity.createExplicitIntent(this, character));
     }
+
+    //region private methods
 
     private void initUI() {
         setSupportActionBar(mToolbar);
@@ -119,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements CharactersFragmen
                 .addToBackStack(CharactersFragment.TAG)
                 .commit();
     }
+
+    //endregion
 
 //    private void getResource(BaseResponse<MarvelCharacter> response) {
 //        List<MarvelCharacter> list = response.mResponseData.mCharacterList;

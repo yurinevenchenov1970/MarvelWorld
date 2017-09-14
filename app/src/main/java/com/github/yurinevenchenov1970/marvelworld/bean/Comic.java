@@ -4,19 +4,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
 
 /**
  * @author Yuri Nevenchenov on 9/4/2017.
  */
-
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Comic implements Parcelable {
 
     public static final ClassCreator CREATOR = new ClassCreator();
 
     @JsonProperty("resourceURI")
-    public String mResourseUri;
+    public String mResourceUri;
 
     @JsonProperty("name")
     public String mName;
@@ -26,7 +27,7 @@ public class Comic implements Parcelable {
     }
 
     protected Comic(Parcel in) {
-        mResourseUri = in.readString();
+        mResourceUri = in.readString();
         mName = in.readString();
     }
 
@@ -39,7 +40,7 @@ public class Comic implements Parcelable {
     @JsonIgnore
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mResourseUri);
+        dest.writeString(mResourceUri);
         dest.writeString(mName);
     }
 
@@ -49,21 +50,21 @@ public class Comic implements Parcelable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Comic comic = (Comic) o;
-        return Objects.equal(mResourseUri, comic.mResourseUri) &&
+        return Objects.equal(mResourceUri, comic.mResourceUri) &&
                 Objects.equal(mName, comic.mName);
     }
 
     @JsonIgnore
     @Override
     public int hashCode() {
-        return Objects.hashCode(mResourseUri, mName);
+        return Objects.hashCode(mResourceUri, mName);
     }
 
     @JsonIgnore
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
-                .add("mResourseUri", mResourseUri)
+                .add("mResourseUri", mResourceUri)
                 .add("mName", mName)
                 .toString();
     }
