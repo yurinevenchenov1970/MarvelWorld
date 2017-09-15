@@ -123,25 +123,4 @@ public class MainActivity extends AppCompatActivity implements CharactersFragmen
     }
 
     //endregion
-
-//    private void getResource(BaseResponse<MarvelCharacter> response) {
-//        List<MarvelCharacter> list = response.mResponseData.mCharacterList;
-//        MarvelCharacter character = list.get(0);
-//        String resUrl = character.mComics.mComicList.get(0).mResourseUri;
-//
-//        Call<BaseResponse<MarvelResource>> responseCall = mService.getMarvelResources(resUrl, 1, HASH, API_KEY);
-//
-//        responseCall.enqueue(new Callback<BaseResponse<MarvelResource>>() {
-//            @Override
-//            public void onResponse(Call<BaseResponse<MarvelResource>> call, Response<BaseResponse<MarvelResource>> response) {
-//                BaseResponse<MarvelResource> baseResponse = response.body();
-//                if (baseResponse != null) {
-//                    System.out.println(baseResponse.mResponseData.toString());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<BaseResponse<MarvelResource>> call, Throwable t) {
-//                Log.e(TAG, "failure with message " + t.getMessage());
-//            }
 }

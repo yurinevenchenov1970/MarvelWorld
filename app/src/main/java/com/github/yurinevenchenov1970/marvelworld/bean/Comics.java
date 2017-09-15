@@ -23,7 +23,7 @@ public class Comics implements Parcelable {
     public String mCollectionURI;
 
     @JsonProperty("items")
-    public List<Comic> mComicList;
+    public List<ComicsItem> mComicsItemList;
 
     public Comics() {
         //Empty constructor needed by Jackson
@@ -31,8 +31,8 @@ public class Comics implements Parcelable {
 
     protected Comics(Parcel in) {
         mCollectionURI = in.readString();
-        mComicList = new ArrayList<>();
-        in.readTypedList(mComicList, Comic.CREATOR);
+        mComicsItemList = new ArrayList<>();
+        in.readTypedList(mComicsItemList, ComicsItem.CREATOR);
     }
 
     @JsonIgnore
@@ -45,7 +45,7 @@ public class Comics implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(mCollectionURI);
-        parcel.writeTypedList(mComicList);
+        parcel.writeTypedList(mComicsItemList);
     }
 
     @JsonIgnore
@@ -55,13 +55,13 @@ public class Comics implements Parcelable {
         if (o == null || getClass() != o.getClass()) return false;
         Comics comics = (Comics) o;
         return Objects.equal(mCollectionURI, comics.mCollectionURI) &&
-                Objects.equal(mComicList, comics.mComicList);
+                Objects.equal(mComicsItemList, comics.mComicsItemList);
     }
 
     @JsonIgnore
     @Override
     public int hashCode() {
-        return Objects.hashCode(mCollectionURI, mComicList);
+        return Objects.hashCode(mCollectionURI, mComicsItemList);
     }
 
     @JsonIgnore
@@ -69,7 +69,7 @@ public class Comics implements Parcelable {
     public String toString() {
         return Objects.toStringHelper(this)
                 .add("mCollectionURI", mCollectionURI)
-                .add("mComicList", mComicList)
+                .add("mComicsItemList", mComicsItemList)
                 .toString();
     }
 

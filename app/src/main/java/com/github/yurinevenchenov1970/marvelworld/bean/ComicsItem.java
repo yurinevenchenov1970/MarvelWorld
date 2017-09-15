@@ -12,7 +12,7 @@ import com.google.common.base.Objects;
  * @author Yuri Nevenchenov on 9/4/2017.
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class Comic implements Parcelable {
+public class ComicsItem implements Parcelable {
 
     public static final ClassCreator CREATOR = new ClassCreator();
 
@@ -22,11 +22,11 @@ public class Comic implements Parcelable {
     @JsonProperty("name")
     public String mName;
 
-    public Comic() {
+    public ComicsItem() {
         //Empty constructor needed by Jackson
     }
 
-    protected Comic(Parcel in) {
+    protected ComicsItem(Parcel in) {
         mResourceUri = in.readString();
         mName = in.readString();
     }
@@ -49,9 +49,9 @@ public class Comic implements Parcelable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Comic comic = (Comic) o;
-        return Objects.equal(mResourceUri, comic.mResourceUri) &&
-                Objects.equal(mName, comic.mName);
+        ComicsItem comicsItem = (ComicsItem) o;
+        return Objects.equal(mResourceUri, comicsItem.mResourceUri) &&
+                Objects.equal(mName, comicsItem.mName);
     }
 
     @JsonIgnore
@@ -69,15 +69,15 @@ public class Comic implements Parcelable {
                 .toString();
     }
 
-    private static final class ClassCreator implements Creator<Comic> {
+    private static final class ClassCreator implements Creator<ComicsItem> {
         @Override
-        public Comic createFromParcel(Parcel in) {
-            return new Comic(in);
+        public ComicsItem createFromParcel(Parcel in) {
+            return new ComicsItem(in);
         }
 
         @Override
-        public Comic[] newArray(int size) {
-            return new Comic[size];
+        public ComicsItem[] newArray(int size) {
+            return new ComicsItem[size];
         }
     }
 }

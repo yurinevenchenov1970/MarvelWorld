@@ -1,7 +1,6 @@
-package com.github.yurinevenchenov1970.marvelworld.net;
+package com.github.yurinevenchenov1970.marvelworld;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,9 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.github.yurinevenchenov1970.marvelworld.R;
 import com.github.yurinevenchenov1970.marvelworld.adapter.CharacterClickListener;
 import com.github.yurinevenchenov1970.marvelworld.adapter.MarvelUrlAdapter;
 import com.github.yurinevenchenov1970.marvelworld.bean.MarvelUrl;

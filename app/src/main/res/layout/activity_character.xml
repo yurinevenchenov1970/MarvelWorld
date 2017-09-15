@@ -37,11 +37,24 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
             tools:text="some long description"/>
 
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description_text_view"/>
+
+        <include
+            layout="@layout/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_pager"/>
+
+
         <FrameLayout
             android:id="@+id/comics_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/description_text_view"/>
+            android:layout_below="@+id/progress_bar"/>
 
         <FrameLayout
             android:id="@+id/urls_container"
