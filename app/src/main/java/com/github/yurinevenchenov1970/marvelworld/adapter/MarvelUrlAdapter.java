@@ -14,29 +14,30 @@ import java.util.List;
  * @author Yuri Nevenchenov on 9/14/2017.
  */
 
-public class MarvelUrlAdapter extends RecyclerView.Adapter<MarvelUrlViewHolder>{
+public class MarvelUrlAdapter extends RecyclerView.Adapter<MarvelUrlViewHolder> {
     private CharacterClickListener mClickListener;
     private List<MarvelUrl> mMarvelUrls;
+
     public MarvelUrlAdapter(CharacterClickListener clickListener,
-                            List<MarvelUrl> marvelUrls){
+                            List<MarvelUrl> marvelUrls) {
         mClickListener = clickListener;
         mMarvelUrls = marvelUrls;
     }
 
     @Override
-    public MarvelUrlViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public MarvelUrlViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.marvel_url_layout, null);
         return new MarvelUrlViewHolder(view, mClickListener);
     }
 
     @Override
-    public void onBindViewHolder(MarvelUrlViewHolder holder, int position){
+    public void onBindViewHolder(MarvelUrlViewHolder holder, int position) {
         MarvelUrl marvelUrl = mMarvelUrls.get(position);
         holder.mUrlButton.setText(marvelUrl.mType);
     }
 
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         return mMarvelUrls.size();
     }
 }

@@ -6,5 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="@dimen/padding_small"
-    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+    android:textColor="@color/colorPrimaryDark"
+    android:textStyle="bold|italic"
     tools:text="comics item name"/>

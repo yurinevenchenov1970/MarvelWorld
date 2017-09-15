@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Button xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/url_button"
+<Button android:id="@+id/url_button"
         style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="false"
         android:gravity="center_horizontal"
+        android:textStyle="bold"
         tools:text="some url"/>

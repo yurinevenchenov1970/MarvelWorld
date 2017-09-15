@@ -72,7 +72,7 @@ public class MarvelCharacter implements Parcelable {
         return Objects.equal(mName, that.mName) &&
                 Objects.equal(mDescription, that.mDescription) &&
                 Objects.equal(mThumbnail, that.mThumbnail) &&
-                Objects.equal(mComics, that.mComics)&&
+                Objects.equal(mComics, that.mComics) &&
                 Objects.equal(mUrls, that.mUrls);
     }
 

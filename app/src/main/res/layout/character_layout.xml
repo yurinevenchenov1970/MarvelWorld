@@ -11,25 +11,25 @@
         tools:src="@android:drawable/btn_star"/>
 
     <TextView
-        android:gravity="center"
         android:id="@+id/character_name_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/character_image_view"
         android:fontFamily="serif"
+        android:gravity="center"
         android:padding="@dimen/padding_small"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
         android:textStyle="bold"
         tools:text="HULK"/>
 
     <TextView
-        android:fontFamily="serif"
-        android:gravity="center"
         android:id="@+id/description_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/character_name_text_view"
         android:layout_below="@id/character_name_text_view"
+        android:fontFamily="serif"
+        android:gravity="center"
         android:padding="@dimen/padding_small"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
         tools:text="some description for marvel character"/>

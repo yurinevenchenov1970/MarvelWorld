@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements CharactersFragment.OnItemClickListener{
+public class MainActivity extends AppCompatActivity implements CharactersFragment.OnItemClickListener {
 
     private static final String API_KEY = "8ce13978a563fbc8c0353ac9008e8bfd";
     private static final String HASH = "da3930ee8a5cf7ae5bce3dc296b6d6b6";
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements CharactersFragmen
     }
 
     @Override
-    public void onFragmentInteraction(MarvelCharacter character){
+    public void onFragmentInteraction(MarvelCharacter character) {
         startActivity(CharacterActivity.createExplicitIntent(this, character));
     }
 
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements CharactersFragmen
             @Override
             public void onResponse(Call<BaseResponse<MarvelCharacter>> call, Response<BaseResponse<MarvelCharacter>> response) {
                 BaseResponse<MarvelCharacter> baseResponse = response.body();
-                if(baseResponse != null) {
+                if (baseResponse != null) {
                     hideProgressBar();
                     showData(new ArrayList<>(baseResponse.mResponseData.mCharacterList));
                 }

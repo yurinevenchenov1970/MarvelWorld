@@ -14,7 +14,7 @@ import java.util.List;
  * @author Yuri Nevenchenov on 9/15/2017.
  */
 
-public class ComicsItemAdapter extends RecyclerView.Adapter<ComicsItemViewHolder>{
+public class ComicsItemAdapter extends RecyclerView.Adapter<ComicsItemViewHolder> {
 
     private List<ComicsItem> mComicsItems;
     private CharacterClickListener mClickListener;

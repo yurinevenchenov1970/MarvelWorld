@@ -17,11 +17,11 @@ public class ApiClient {
 
     public static Retrofit getClient() {
         if (sRetrofit == null) {
-                sRetrofit = new Retrofit.Builder()
-                                .baseUrl(BASE_URL)
-                                .addConverterFactory(JacksonConverterFactory.create())
-                                .build();
-            }
+            sRetrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(JacksonConverterFactory.create())
+                    .build();
+        }
         return sRetrofit;
     }
 }

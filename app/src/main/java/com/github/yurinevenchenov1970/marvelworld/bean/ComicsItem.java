@@ -11,7 +11,7 @@ import com.google.common.base.Objects;
 /**
  * @author Yuri Nevenchenov on 9/4/2017.
  */
-@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ComicsItem implements Parcelable {
 
     public static final ClassCreator CREATOR = new ClassCreator();

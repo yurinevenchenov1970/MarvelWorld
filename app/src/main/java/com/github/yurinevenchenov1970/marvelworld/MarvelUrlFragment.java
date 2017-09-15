@@ -83,12 +83,12 @@ public class MarvelUrlFragment extends Fragment implements CharacterClickListene
         mListener = null;
     }
 
-@Override
-public void onItemClick(int position) {
-    if(mListener != null) {
-        mListener.onMarvelUrlClick(mMarvelUrls.get(position));
+    @Override
+    public void onItemClick(int position) {
+        if (mListener != null) {
+            mListener.onMarvelUrlClick(mMarvelUrls.get(position));
+        }
     }
-}
 
     public interface OnItemClickListener {
         void onMarvelUrlClick(MarvelUrl character);

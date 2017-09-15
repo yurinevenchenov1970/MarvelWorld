@@ -27,6 +27,7 @@ public class Thumbnail implements Parcelable {
     public static final String LANDSCAPE_AMAZING = "landscape_amazing";
     public static final String LANDSCAPE_INCREDIBLE = "landscape_incredible";
     public static final String PORTRAIT_FANTASTIC = "portrait_fantastic";
+    public static final String PORTRAIT_UNCANNY = "portrait_uncanny";
 
     public static final ClassCreator CREATOR = new ClassCreator();
 
@@ -72,6 +73,11 @@ public class Thumbnail implements Parcelable {
     @JsonIgnore
     public String getFullPath(@ThumbnailSize String size) {
         return mPath + "/" + size + "." + mExtension;
+    }
+
+    @JsonIgnore
+    public String getFullSize() {
+        return mPath + "." + mExtension;
     }
 
     @JsonIgnore
