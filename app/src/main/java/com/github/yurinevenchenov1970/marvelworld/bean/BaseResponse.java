@@ -18,10 +18,10 @@ public class BaseResponse<T> implements Parcelable {
     public static final ClassCreator CREATOR = new ClassCreator();
 
     @JsonProperty("code")
-    public int mCode;
+    private int mCode;
 
     @JsonProperty("data")
-    public ResponseData<T> mResponseData;
+    private ResponseData<T> mResponseData;
 
     public BaseResponse() {
         //Empty constructor needed by Jackson
@@ -30,6 +30,14 @@ public class BaseResponse<T> implements Parcelable {
     protected BaseResponse(Parcel in) {
         mCode = in.readInt();
         mResponseData = in.readParcelable(ResponseData.class.getClassLoader());
+    }
+
+    public int getCode() {
+        return mCode;
+    }
+
+    public ResponseData<T> getResponseData() {
+        return mResponseData;
     }
 
     @JsonIgnore

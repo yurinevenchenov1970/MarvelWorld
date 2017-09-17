@@ -36,10 +36,10 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder> 
     @Override
     public void onBindViewHolder(CharacterViewHolder holder, int position) {
         MarvelCharacter character = mCharacterList.get(position);
-        holder.mNameTextView.setText(character.mName);
-        holder.mDescriptionTextView.setText(character.mDescription);
+        holder.mNameTextView.setText(character.getName());
+        holder.mDescriptionTextView.setText(character.getDescription());
         Picasso.with(holder.itemView.getContext())
-                .load(character.mThumbnail.getFullPath(Thumbnail.PORTRAIT_FANTASTIC))
+                .load(character.getThumbnail().getFullPath(Thumbnail.PORTRAIT_FANTASTIC))
                 .placeholder(R.drawable.progress_animation)
                 .error(R.drawable.error)
                 .into(holder.mImageView);

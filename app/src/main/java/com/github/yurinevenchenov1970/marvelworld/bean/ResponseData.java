@@ -14,13 +14,14 @@ import java.util.List;
 /**
  * @author Yuri Nevenchenov on 9/4/2017.
  */
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResponseData<T> implements Parcelable {
 
     public static final ClassCreator CREATOR = new ClassCreator();
 
     @JsonProperty("results")
-    public List<T> mCharacterList;
+    protected List<T> mCharacterList;
 
     public ResponseData() {
         //Empty constructor needed by Jackson
@@ -29,6 +30,10 @@ public class ResponseData<T> implements Parcelable {
     protected ResponseData(Parcel in) {
         mCharacterList = new ArrayList<>();
         in.readList(mCharacterList, null);
+    }
+
+    public List<T> getCharacterList() {
+        return mCharacterList;
     }
 
     @JsonIgnore

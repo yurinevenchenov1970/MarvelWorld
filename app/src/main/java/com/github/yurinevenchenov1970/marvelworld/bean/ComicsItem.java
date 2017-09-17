@@ -11,16 +11,17 @@ import com.google.common.base.Objects;
 /**
  * @author Yuri Nevenchenov on 9/4/2017.
  */
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ComicsItem implements Parcelable {
 
     public static final ClassCreator CREATOR = new ClassCreator();
 
     @JsonProperty("resourceURI")
-    public String mResourceUri;
+    private String mResourceUri;
 
     @JsonProperty("name")
-    public String mName;
+    private String mName;
 
     public ComicsItem() {
         //Empty constructor needed by Jackson
@@ -29,6 +30,14 @@ public class ComicsItem implements Parcelable {
     protected ComicsItem(Parcel in) {
         mResourceUri = in.readString();
         mName = in.readString();
+    }
+
+    public String getResourceUri() {
+        return mResourceUri;
+    }
+
+    public String getName() {
+        return mName;
     }
 
     @JsonIgnore

@@ -28,8 +28,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements CharactersFragment.OnItemClickListener {
 
-    private static final String API_KEY = "8ce13978a563fbc8c0353ac9008e8bfd";
-    private static final String HASH = "da3930ee8a5cf7ae5bce3dc296b6d6b6";
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private MarvelService mService;
@@ -96,14 +94,14 @@ public class MainActivity extends AppCompatActivity implements CharactersFragmen
 
     private void getDataFromServer(String query) {
         mService = ApiClient.getClient().create(MarvelService.class);
-        Call<BaseResponse<MarvelCharacter>> responseCall = mService.getCharacters(query, API_KEY, 1, HASH);
+        Call<BaseResponse<MarvelCharacter>> responseCall = mService.getCharacters(query, Constants.API_KEY, Constants.TIME_STAMP, Constants.HASH);
         responseCall.enqueue(new Callback<BaseResponse<MarvelCharacter>>() {
             @Override
             public void onResponse(Call<BaseResponse<MarvelCharacter>> call, Response<BaseResponse<MarvelCharacter>> response) {
                 BaseResponse<MarvelCharacter> baseResponse = response.body();
                 if (baseResponse != null) {
                     hideProgressBar();
-                    showData(new ArrayList<>(baseResponse.mResponseData.mCharacterList));
+                    showData(new ArrayList<>(baseResponse.getResponseData().getCharacterList()));
                 }
             }
 

@@ -53,7 +53,7 @@ public class ComicsFragment extends Fragment implements CharacterClickListener {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mComics = getArguments().getParcelable(EXTRA_COMICS);
-            mAdapter = new ComicsItemAdapter(mComics.mComicsItemList, this);
+            mAdapter = new ComicsItemAdapter(mComics.getComicsItemList(), this);
         }
     }
 
@@ -80,7 +80,7 @@ public class ComicsFragment extends Fragment implements CharacterClickListener {
     @Override
     public void onItemClick(int position) {
         if (mListener != null) {
-            mListener.onComicsItemClick(mComics.mComicsItemList.get(position));
+            mListener.onComicsItemClick(mComics.getComicsItemList().get(position));
         }
     }
 

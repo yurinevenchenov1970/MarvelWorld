@@ -16,10 +16,10 @@ public class MarvelUrl implements Parcelable {
     public static final ClassCreator CREATOR = new ClassCreator();
 
     @JsonProperty("type")
-    public String mType;
+    private String mType;
 
     @JsonProperty("url")
-    public String mUrl;
+    private String mUrl;
 
     public MarvelUrl() {
         //Empty constructor needed by Jackson
@@ -28,6 +28,14 @@ public class MarvelUrl implements Parcelable {
     protected MarvelUrl(Parcel in) {
         mType = in.readString();
         mUrl = in.readString();
+    }
+
+    public String getType() {
+        return mType;
+    }
+
+    public String getUrl() {
+        return mUrl;
     }
 
     @JsonIgnore

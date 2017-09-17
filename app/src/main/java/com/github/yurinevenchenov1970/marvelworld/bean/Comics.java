@@ -14,16 +14,17 @@ import java.util.List;
 /**
  * @author Yuri Nevenchenov on 9/4/2017.
  */
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Comics implements Parcelable {
 
     public static final ClassCreator CREATOR = new ClassCreator();
 
     @JsonProperty("collectionURI")
-    public String mCollectionURI;
+    private String mCollectionURI;
 
     @JsonProperty("items")
-    public List<ComicsItem> mComicsItemList;
+    private List<ComicsItem> mComicsItemList;
 
     public Comics() {
         //Empty constructor needed by Jackson
@@ -33,6 +34,14 @@ public class Comics implements Parcelable {
         mCollectionURI = in.readString();
         mComicsItemList = new ArrayList<>();
         in.readTypedList(mComicsItemList, ComicsItem.CREATOR);
+    }
+
+    public String getCollectionURI() {
+        return mCollectionURI;
+    }
+
+    public List<ComicsItem> getComicsItemList() {
+        return mComicsItemList;
     }
 
     @JsonIgnore

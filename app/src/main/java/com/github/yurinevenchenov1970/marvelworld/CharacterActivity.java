@@ -38,8 +38,6 @@ public class CharacterActivity extends AppCompatActivity implements MarvelUrlFra
 
     public static final String TAG = CharacterActivity.class.getSimpleName();
 
-    private static final String API_KEY = "8ce13978a563fbc8c0353ac9008e8bfd";
-    private static final String HASH = "da3930ee8a5cf7ae5bce3dc296b6d6b6";
     private static final String EXTRA_MARVEL_CHARACTER = "extra_marvel_character";
 
     private MarvelService mService;
@@ -84,34 +82,34 @@ public class CharacterActivity extends AppCompatActivity implements MarvelUrlFra
     @Override
     public void onComicsItemClick(ComicsItem comicsItem) {
         showProgressBar();
-        getResource(comicsItem.mResourceUri);
+        getResource(comicsItem.getResourceUri());
     }
 
     @Override
     public void onMarvelUrlClick(MarvelUrl marvelUrl) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(marvelUrl.mUrl)));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(marvelUrl.getUrl())));
     }
 
     private void fillUI() {
         Picasso.with(this)
-                .load(mMarvelCharacter.mThumbnail.getFullSize())
+                .load(mMarvelCharacter.getThumbnail().getFullSize())
                 .placeholder(R.drawable.progress_animation)
                 .error(R.drawable.error)
                 .into(mImageView);
-        mNameTextView.setText(mMarvelCharacter.mName);
-        mDescriptionTextView.setText(mMarvelCharacter.mDescription);
+        mNameTextView.setText(mMarvelCharacter.getName());
+        mDescriptionTextView.setText(mMarvelCharacter.getDescription());
         mViewPager.setVisibility(View.GONE);
     }
 
     private void fillComicsContainer() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
-        transaction.replace(R.id.comics_container, ComicsFragment.newInstance(mMarvelCharacter.mComics))
+        transaction.replace(R.id.comics_container, ComicsFragment.newInstance(mMarvelCharacter.getComics()))
                 .commit();
     }
 
     private void fillUrlContainer() {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
-        transaction.replace(R.id.urls_container, MarvelUrlFragment.newInstance(new ArrayList<>(mMarvelCharacter.mUrls)))
+        transaction.replace(R.id.urls_container, MarvelUrlFragment.newInstance(new ArrayList<>(mMarvelCharacter.getUrls())))
                 .commit();
     }
 
@@ -125,7 +123,7 @@ public class CharacterActivity extends AppCompatActivity implements MarvelUrlFra
 
     private void getResource(String resourseUri) {
         mService = ApiClient.getClient().create(MarvelService.class);
-        Call<BaseResponse<MarvelResource>> responseCall = mService.getMarvelResources(resourseUri, 1, HASH, API_KEY);
+        Call<BaseResponse<MarvelResource>> responseCall = mService.getMarvelResources(resourseUri, Constants.TIME_STAMP, Constants.HASH, Constants.API_KEY);
 
         responseCall.enqueue(new Callback<BaseResponse<MarvelResource>>() {
             @Override
@@ -133,7 +131,7 @@ public class CharacterActivity extends AppCompatActivity implements MarvelUrlFra
                 BaseResponse<MarvelResource> baseResponse = response.body();
                 hideProgressBar();
                 if (baseResponse != null) {
-                    List<Thumbnail> images = baseResponse.mResponseData.mCharacterList.get(0).mImages;
+                    List<Thumbnail> images = baseResponse.getResponseData().getCharacterList().get(0).getImages();
                     ComicsPagerAdapter adapter = new ComicsPagerAdapter(getApplicationContext(), images);
                     mViewPager.setVisibility(View.VISIBLE);
                     mViewPager.setAdapter(adapter);

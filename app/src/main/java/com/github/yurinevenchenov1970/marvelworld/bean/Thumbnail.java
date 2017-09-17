@@ -17,7 +17,8 @@ public class Thumbnail implements Parcelable {
     @StringDef({STANDARD_MEDIUM,
             LANDSCAPE_AMAZING,
             LANDSCAPE_INCREDIBLE,
-            PORTRAIT_FANTASTIC
+            PORTRAIT_FANTASTIC,
+            PORTRAIT_UNCANNY
     })
 
     public @interface ThumbnailSize {
@@ -32,16 +33,16 @@ public class Thumbnail implements Parcelable {
     public static final ClassCreator CREATOR = new ClassCreator();
 
     @JsonProperty("path")
-    public String mPath;
+    private String mPath;
 
     @JsonProperty("extension")
-    public String mExtension;
+    private String mExtension;
 
     @JsonProperty("resourceURI")
-    public String mResourceURI;
+    private String mResourceURI;
 
     @JsonProperty("comix")
-    public Comics mComics;
+    private Comics mComics;
 
     public Thumbnail() {
         //Empty constructor needed by Jackson
@@ -50,6 +51,22 @@ public class Thumbnail implements Parcelable {
     protected Thumbnail(Parcel in) {
         mPath = in.readString();
         mExtension = in.readString();
+    }
+
+    public String getPath() {
+        return mPath;
+    }
+
+    public String getExtension() {
+        return mExtension;
+    }
+
+    public String getResourceURI() {
+        return mResourceURI;
+    }
+
+    public Comics getComics() {
+        return mComics;
     }
 
     @JsonIgnore
@@ -66,9 +83,8 @@ public class Thumbnail implements Parcelable {
     }
 
     /**
-     * +     * @param size one of the supported sizes
-     * +     * @return full path to the image
-     * +
+     * @param size one of the supported sizes
+     * @return full path to the image
      */
     @JsonIgnore
     public String getFullPath(@ThumbnailSize String size) {

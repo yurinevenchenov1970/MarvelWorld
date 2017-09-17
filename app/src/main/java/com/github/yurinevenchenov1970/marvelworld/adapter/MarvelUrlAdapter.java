@@ -33,7 +33,7 @@ public class MarvelUrlAdapter extends RecyclerView.Adapter<MarvelUrlViewHolder> 
     @Override
     public void onBindViewHolder(MarvelUrlViewHolder holder, int position) {
         MarvelUrl marvelUrl = mMarvelUrls.get(position);
-        holder.mUrlButton.setText(marvelUrl.mType);
+        holder.mUrlButton.setText(marvelUrl.getType());
     }
 
     @Override

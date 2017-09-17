@@ -34,7 +34,7 @@ public class ComicsItemAdapter extends RecyclerView.Adapter<ComicsItemViewHolder
     @Override
     public void onBindViewHolder(ComicsItemViewHolder holder, int position) {
         ComicsItem comicsItem = mComicsItems.get(position);
-        holder.mComicsItemTextView.setText(comicsItem.mName);
+        holder.mComicsItemTextView.setText(comicsItem.getName());
     }
 
     @Override

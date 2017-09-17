@@ -14,28 +14,29 @@ import java.util.List;
 /**
  * @author Yuri Nevenchenov on 9/7/2017.
  */
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MarvelResource implements Parcelable {
 
     public static final ClassCreator CREATOR = new ClassCreator();
 
     @JsonProperty("title")
-    public String mTitle;
+    private String mTitle;
 
     @JsonProperty("description")
-    public String mDescription;
+    private String mDescription;
 
     @JsonProperty("thumbnail")
-    public Thumbnail mThumbnail;
+    private Thumbnail mThumbnail;
 
     @JsonProperty("images")
-    public List<Thumbnail> mImages;
+    private List<Thumbnail> mImages;
 
     @JsonProperty("resourceURI")
-    public String mResourceUri;
+    private String mResourceUri;
 
     @JsonProperty("urls")
-    public List<MarvelUrl> mUrls;
+    private List<MarvelUrl> mUrls;
 
     public MarvelResource() {
         //Empty constructor needed by Jackson
@@ -49,6 +50,30 @@ public class MarvelResource implements Parcelable {
         mResourceUri = in.readString();
         mUrls = new ArrayList<>();
         in.readTypedList(mUrls, MarvelUrl.CREATOR);
+    }
+
+    public String getTitle() {
+        return mTitle;
+    }
+
+    public String getDescription() {
+        return mDescription;
+    }
+
+    public Thumbnail getThumbnail() {
+        return mThumbnail;
+    }
+
+    public List<Thumbnail> getImages() {
+        return mImages;
+    }
+
+    public String getResourceUri() {
+        return mResourceUri;
+    }
+
+    public List<MarvelUrl> getUrls() {
+        return mUrls;
     }
 
     @JsonIgnore
