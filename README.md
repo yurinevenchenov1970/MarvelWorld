@@ -15,8 +15,7 @@ Simple application to find info about Marvel World characters
         also app saves search results so you can go back in stack and see them.
 
 
-        ![marvelworld1](https://user-images.githubusercontent.com/29121233/30524782-a7b01b28-9c02-11e7-81a1-7e25b72d384b.gif)
-        ![marvelworld2](https://user-images.githubusercontent.com/29121233/30524783-aa9cdaf6-9c02-11e7-9f87-ce9b4c80efcc.gif)
+![marvelworld1](https://user-images.githubusercontent.com/29121233/30524806-4d334b74-9c03-11e7-99b0-2459c434906a.gif)        
 
 
         Libs used in project:
