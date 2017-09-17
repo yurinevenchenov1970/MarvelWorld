@@ -16,7 +16,7 @@ Simple application to find info about Marvel World characters
 
 
 ![marvelworld1](https://user-images.githubusercontent.com/29121233/30524806-4d334b74-9c03-11e7-99b0-2459c434906a.gif)        
-
+![marvelworld2](https://user-images.githubusercontent.com/29121233/30524817-7106b19e-9c03-11e7-806f-8be29770713d.gif)
 
         Libs used in project:
         1.Retrofit (http://square.github.io/retrofit/) used to turn our HTTP API into a Java interface.
